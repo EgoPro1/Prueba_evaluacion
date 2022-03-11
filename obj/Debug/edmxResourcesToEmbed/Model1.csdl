@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpresaABCDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="trabajadores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dni" Type="Int32" />
+    <Property Name="idboss" Type="Int32" />
+    <NavigationProperty Name="trabajadores1" Relationship="Self.FK__trabajado__idbos__117F9D94" FromRole="trabajadores" ToRole="trabajadores1" />
+    <NavigationProperty Name="trabajadores2" Relationship="Self.FK__trabajado__idbos__117F9D94" FromRole="trabajadores1" ToRole="trabajadores" />
+  </EntityType>
+  <Association Name="FK__trabajado__idbos__117F9D94">
+    <End Role="trabajadores" Type="Self.trabajadores" Multiplicity="0..1" />
+    <End Role="trabajadores1" Type="Self.trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajadores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trabajadores1">
+        <PropertyRef Name="idboss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpresaABCDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="trabajadores" EntityType="Self.trabajadores" />
+    <AssociationSet Name="FK__trabajado__idbos__117F9D94" Association="Self.FK__trabajado__idbos__117F9D94">
+      <End Role="trabajadores" EntitySet="trabajadores" />
+      <End Role="trabajadores1" EntitySet="trabajadores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

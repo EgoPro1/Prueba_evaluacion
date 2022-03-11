@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmpresaABCDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="trabajadores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="100" />
+    <Property Name="dni" Type="int" />
+    <Property Name="idboss" Type="int" />
+  </EntityType>
+  <Association Name="FK__trabajado__idbos__117F9D94">
+    <End Role="trabajadores" Type="Self.trabajadores" Multiplicity="0..1" />
+    <End Role="trabajadores1" Type="Self.trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trabajadores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trabajadores1">
+        <PropertyRef Name="idboss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmpresaABCDModelStoreContainer">
+    <EntitySet Name="trabajadores" EntityType="Self.trabajadores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__trabajado__idbos__117F9D94" Association="Self.FK__trabajado__idbos__117F9D94">
+      <End Role="trabajadores" EntitySet="trabajadores" />
+      <End Role="trabajadores1" EntitySet="trabajadores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

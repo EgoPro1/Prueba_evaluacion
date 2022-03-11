@@ -1,0 +1,76 @@
+﻿@model IEnumerable<pruebatec.trabajadores>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+
+    *{
+        box-sizing:border-box
+    }
+    .body{
+        font-family: Arial, Helvetica, sans-serif
+    }
+    .column{
+        float:left;
+        width:25%;
+        padding: 0 10px;
+
+    }
+
+   .card{
+        padding:16px;
+        text-align:center;
+        background:#adadad
+
+    }
+
+</style>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model) {
+ /*   <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trabajadores2.fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+    */
+        <div class="column">
+            <div class="card">
+
+                <h3>@Html.DisplayFor(modelItem => item.fullname)</h3>
+                <h3>@Html.DisplayFor(modelItem => item.dni)</h3>
+                <h3>@Html.DisplayFor(modelItem => item.trabajadores2.fullname)</h3>
+                <h3>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </h3>
+
+            </div>
+
+        </div>
+   
+
+
+}
+
